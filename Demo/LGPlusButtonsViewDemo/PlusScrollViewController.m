@@ -171,9 +171,13 @@
     _plusButtonsViewExample.openingSide = LGPlusButtonsViewOpeningSideRight;
     _plusButtonsViewExample.plusButtonAnimationType = LGPlusButtonAnimationTypeCrossDissolve;
     _plusButtonsViewExample.buttonsAppearingAnimationType = LGPlusButtonsAppearingAnimationTypeCrossDissolve;
-
+    _plusButtonsViewExample.descriptionsPosition = LGPlusButtonDescriptionsPositionBottom;
+    
+//    [_plusButtonsViewExample setButtonsInsets:UIEdgeInsetsMake(0, 0, 0, 34) forOrientation:LGPlusButtonsViewOrientationAll];
+    
+    
     [_plusButtonsViewExample setButtonsTitles:@[@"+", @"1", @"2"] forState:UIControlStateNormal];
-//    [_plusButtonsViewExample setDescriptionsTexts:@[@"", @"Description 1", @"Description 2"]];
+    [_plusButtonsViewExample setDescriptionsTexts:@[@"Service", @"Member", @"Event"]];
 
     [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.f blue:0.5 alpha:1.f] forState:UIControlStateNormal];
     [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.2 blue:0.6 alpha:1.f] forState:UIControlStateHighlighted];
@@ -182,11 +186,18 @@
     [_plusButtonsViewExample setButtonsLayerBorderWidth:2.f];
     [_plusButtonsViewExample setButtonsLayerBorderColor:[UIColor colorWithWhite:0.9 alpha:1.f]];
     [_plusButtonsViewExample setButtonsTitleFont:[UIFont systemFontOfSize:24.f] forOrientation:LGPlusButtonsViewOrientationAll];
+    
+
+    for (int i = 1; i < 3; i++) {
+        [_plusButtonsViewExample setButtonAtIndex:i offset:CGPointMake(34, 0) forOrientation:LGPlusButtonsViewOrientationAll];
+        [_plusButtonsViewExample setDescriptionAtIndex:i offset:CGPointMake(34, 0) forOrientation:LGPlusButtonsViewOrientationAll];
+    }
+    
     [_plusButtonsViewExample setButtonAtIndex:0 titleOffset:CGPointMake(0.f, -2.f) forOrientation:LGPlusButtonsViewOrientationAll];
     [_plusButtonsViewExample setButtonAtIndex:0 title:@"-" forState:UIControlStateSelected];
 
     [_plusButtonsViewExample setDescriptionsTextColor:[UIColor whiteColor]];
-    [_plusButtonsViewExample setDescriptionsFont:[UIFont boldSystemFontOfSize:18.f] forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewExample setDescriptionsFont:[UIFont boldSystemFontOfSize:12.f] forOrientation:LGPlusButtonsViewOrientationAll];
     [_plusButtonsViewExample setDescriptionsInsets:UIEdgeInsetsMake(0.f, 0.f, 0.f, 4.f) forOrientation:LGPlusButtonsViewOrientationAll];
 
     [_exampleView addSubview:_plusButtonsViewExample];

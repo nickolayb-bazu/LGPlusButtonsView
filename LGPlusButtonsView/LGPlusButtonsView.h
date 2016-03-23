@@ -87,6 +87,14 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonsViewOpeningSide)
     LGPlusButtonsViewOpeningSideBottom  = 3
 };
 
+typedef NS_ENUM(NSUInteger, LGPlusButtonDescriptionsPosition)
+{
+    LGPlusButtonDescriptionsPositionLeft  = 0,
+    LGPlusButtonDescriptionsPositionRight = 1,
+    LGPlusButtonDescriptionsPositionTop = 2,
+    LGPlusButtonDescriptionsPositionBottom = 3
+};
+
 typedef NS_ENUM(NSUInteger, LGPlusButtonsAppearingAnimationType)
 {
     LGPlusButtonsAppearingAnimationTypeNone                            = 0,
@@ -114,6 +122,8 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonAnimationType)
 @property (assign, nonatomic) CGPoint                             offset;
 @property (assign, nonatomic) LGPlusButtonsViewPosition           position;
 @property (assign, nonatomic) LGPlusButtonsViewOpeningSide           openingSide;
+@property (assign, nonatomic) LGPlusButtonDescriptionsPosition descriptionsPosition;
+
 /** How much scroll you need to show/hide buttons. Default is 64.f */
 @property (assign, nonatomic) CGFloat                             scrollSensitivity;
 @property (assign, nonatomic) LGPlusButtonsAppearingAnimationType appearingAnimationType;
