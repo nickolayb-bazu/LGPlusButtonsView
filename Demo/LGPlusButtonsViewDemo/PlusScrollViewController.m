@@ -168,11 +168,12 @@
                             }];
 
     _plusButtonsViewExample.position = LGPlusButtonsViewPositionBottomLeft;
+    _plusButtonsViewExample.openingSide = LGPlusButtonsViewOpeningSideRight;
     _plusButtonsViewExample.plusButtonAnimationType = LGPlusButtonAnimationTypeCrossDissolve;
     _plusButtonsViewExample.buttonsAppearingAnimationType = LGPlusButtonsAppearingAnimationTypeCrossDissolve;
 
     [_plusButtonsViewExample setButtonsTitles:@[@"+", @"1", @"2"] forState:UIControlStateNormal];
-    [_plusButtonsViewExample setDescriptionsTexts:@[@"", @"Description 1", @"Description 2"]];
+//    [_plusButtonsViewExample setDescriptionsTexts:@[@"", @"Description 1", @"Description 2"]];
 
     [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.f blue:0.5 alpha:1.f] forState:UIControlStateNormal];
     [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.2 blue:0.6 alpha:1.f] forState:UIControlStateHighlighted];

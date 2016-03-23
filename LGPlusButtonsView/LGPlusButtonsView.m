@@ -1083,28 +1083,51 @@ typedef NS_ENUM(NSUInteger, LGPlusButtonDescriptionsPosition)
         {
             CGRect previousWrapperFrame = [_buttonWrapperViewsArray1[i-1] frame];
 
-            if (_position == LGPlusButtonsViewPositionBottomRight)
-                buttonFrame = CGRectMake(buttonsContentViewSize.width-buttonInsets.right-buttonSize.width,
-                                         previousWrapperFrame.origin.y-buttonInsets.top-buttonInsets.bottom-buttonSize.height,
-                                         buttonSize.width,
-                                         buttonSize.height);
-            else if (_position == LGPlusButtonsViewPositionBottomLeft)
+            if (_openingSide == LGPlusButtonsViewOpeningSideTop) {
                 buttonFrame = CGRectMake(buttonInsets.left,
                                          previousWrapperFrame.origin.y-buttonInsets.top-buttonInsets.bottom-buttonSize.height,
                                          buttonSize.width,
                                          buttonSize.height);
-            else if (_position == LGPlusButtonsViewPositionTopRight)
-                buttonFrame = CGRectMake(buttonsContentViewSize.width-buttonInsets.right-buttonSize.width,
-                                         previousWrapperFrame.origin.y+previousWrapperFrame.size.height+buttonInsets.bottom+buttonInsets.top,
+            } else if (_openingSide == LGPlusButtonsViewOpeningSideRight) {
+                buttonFrame = CGRectMake(previousWrapperFrame.origin.x + buttonInsets.left + buttonInsets.right + buttonSize.width,
+                                         previousWrapperFrame.origin.y,
                                          buttonSize.width,
                                          buttonSize.height);
-            else if (_position == LGPlusButtonsViewPositionTopLeft)
+            } else if (_openingSide == LGPlusButtonsViewOpeningSideBottom) {
                 buttonFrame = CGRectMake(buttonInsets.left,
-                                         previousWrapperFrame.origin.y+previousWrapperFrame.size.height+buttonInsets.bottom+buttonInsets.top,
+                                         previousWrapperFrame.origin.y+buttonInsets.top+buttonInsets.bottom+buttonSize.height,
                                          buttonSize.width,
                                          buttonSize.height);
+            } else if (_openingSide == LGPlusButtonsViewOpeningSideLeft) {
+                buttonFrame = CGRectMake(previousWrapperFrame.origin.x - buttonInsets.left - buttonInsets.right - buttonSize.width,
+                                         previousWrapperFrame.origin.y,
+                                         buttonSize.width,
+                                         buttonSize.height);
+            }
+            
+//                if (_position == LGPlusButtonsViewPositionBottomRight)
+//                    buttonFrame = CGRectMake(buttonsContentViewSize.width-buttonInsets.right-buttonSize.width,
+//                                             previousWrapperFrame.origin.y-buttonInsets.top-buttonInsets.bottom-buttonSize.height,
+//                                             buttonSize.width,
+//                                             buttonSize.height);
+//                else if (_position == LGPlusButtonsViewPositionBottomLeft)
+//                    buttonFrame = CGRectMake(buttonInsets.left,
+//                                             previousWrapperFrame.origin.y-buttonInsets.top-buttonInsets.bottom-buttonSize.height,
+//                                             buttonSize.width,
+//                                             buttonSize.height);
+//                else if (_position == LGPlusButtonsViewPositionTopRight)
+//                    buttonFrame = CGRectMake(buttonsContentViewSize.width-buttonInsets.right-buttonSize.width,
+//                                             previousWrapperFrame.origin.y+previousWrapperFrame.size.height+buttonInsets.bottom+buttonInsets.top,
+//                                             buttonSize.width,
+//                                             buttonSize.height);
+//                else if (_position == LGPlusButtonsViewPositionTopLeft)
+//                    buttonFrame = CGRectMake(buttonInsets.left,
+//                                             previousWrapperFrame.origin.y+previousWrapperFrame.size.height+buttonInsets.bottom+buttonInsets.top,
+//                                             buttonSize.width,
+//                                             buttonSize.height);
+//            
         }
-
+  
         buttonFrame.origin.x += buttonOffset.x;
         buttonFrame.origin.y += buttonOffset.y;
 
