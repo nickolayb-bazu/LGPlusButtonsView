@@ -1201,6 +1201,7 @@
                 descriptionFrame = CGRectIntegral(descriptionFrame);
 
             description.frame = descriptionFrame;
+            description.textAlignment = NSTextAlignmentCenter;
         }
         else
         {
