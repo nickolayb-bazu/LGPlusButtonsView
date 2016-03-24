@@ -1189,7 +1189,7 @@
 //                descriptionWrapperView.layer.borderWidth = 1.0f;
                 
                 descriptionFrame = CGRectMake(descriptionWrapperView.frame.size.width/2.f - descriptionSize.width/2.f,
-                                              descriptionWrapperView.frame.size.height/2.f-descriptionSize.height/2.f,
+                                              descriptionOffset.y,
                                               descriptionSize.width,
                                               descriptionSize.height);
             }
