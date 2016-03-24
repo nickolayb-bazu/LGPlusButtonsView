@@ -38,7 +38,7 @@
         [self.view addSubview:_scrollView];
 
         _exampleView = [UIView new];
-        _exampleView.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.1];
+        _exampleView.backgroundColor = [UIColor whiteColor];//[UIColor colorWithWhite:0.f alpha:0.1];
         [_scrollView addSubview:_exampleView];
     }
     return self;
@@ -62,9 +62,24 @@
                                                                    actionHandler:^(LGPlusButtonsView *plusButtonView, NSString *title, NSString *description, NSUInteger index)
                             {
                                 NSLog(@"actionHandler | title: %@, description: %@, index: %lu", title, description, (long unsigned)index);
+                                
+                                if (index != 0) {
+                                    
+                                    [buttonTitles exchangeObjectAtIndex:0 withObjectAtIndex:index];
+                                    [buttonDescriptions exchangeObjectAtIndex:0 withObjectAtIndex:index];
+                                    [plusButtonView setButtonsTitles:buttonTitles forState:UIControlStateNormal];
+                                    [plusButtonView setDescriptionsTexts:buttonDescriptions];
+                                    
+                                    //Replace current button with first
+                                    
+                                    //
+                                    
+                                    [plusButtonView hideButtonsAnimated:YES completionHandler:nil];
+                                }
+
                             }];
 
-    _plusButtonsViewExample.position = LGPlusButtonsViewPositionBottomLeft;
+    _plusButtonsViewExample.position = LGPlusButtonsViewPositionTopLeft;
     _plusButtonsViewExample.openingSide = LGPlusButtonsViewOpeningSideRight;
     _plusButtonsViewExample.plusButtonAnimationType = LGPlusButtonAnimationTypeCrossDissolve;
     _plusButtonsViewExample.buttonsAppearingAnimationType = LGPlusButtonsAppearingAnimationTypeCrossDissolve;
@@ -73,29 +88,30 @@
 //    [_plusButtonsViewExample setButtonsInsets:UIEdgeInsetsMake(0, 0, 0, 34) forOrientation:LGPlusButtonsViewOrientationAll];
     
     
-    [_plusButtonsViewExample setButtonsTitles:buttonTitles forState:UIControlStateNormal];
-    [_plusButtonsViewExample setDescriptionsTexts:buttonDescriptions];
-
-    [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.f blue:0.5 alpha:1.f] forState:UIControlStateNormal];
-    [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.2 blue:0.6 alpha:1.f] forState:UIControlStateHighlighted];
-    [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:1.f green:0.2 blue:0.6 alpha:1.f] forState:UIControlStateHighlighted|UIControlStateSelected];
-    [_plusButtonsViewExample setButtonsSize:CGSizeMake(44.f, 44.f) forOrientation:LGPlusButtonsViewOrientationAll];
-    [_plusButtonsViewExample setButtonsLayerBorderWidth:2.f];
-    [_plusButtonsViewExample setButtonsLayerBorderColor:[UIColor colorWithWhite:0.9 alpha:1.f]];
-    [_plusButtonsViewExample setButtonsTitleFont:[UIFont systemFontOfSize:24.f] forOrientation:LGPlusButtonsViewOrientationAll];
-    
-
     for (int i = 1; i < [buttonDescriptions count]; i++) {
         [_plusButtonsViewExample setButtonAtIndex:i offset:CGPointMake(17, 0) forOrientation:LGPlusButtonsViewOrientationAll];
         [_plusButtonsViewExample setDescriptionAtIndex:i offset:CGPointMake(17, 0) forOrientation:LGPlusButtonsViewOrientationAll];
     }
     
-    [_plusButtonsViewExample setButtonAtIndex:0 titleOffset:CGPointMake(0.f, -2.f) forOrientation:LGPlusButtonsViewOrientationAll];
-    [_plusButtonsViewExample setButtonAtIndex:0 title:@"-" forState:UIControlStateSelected];
-
-    [_plusButtonsViewExample setDescriptionsTextColor:[UIColor whiteColor]];
+    UIColor *selectedColor   = [UIColor colorWithRed:0.27 green:0.75 blue:0.93 alpha:1.00];
+    UIColor *unSelectedColor = [UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:1.00];
+    
+    [_plusButtonsViewExample setButtonsTitles:buttonTitles forState:UIControlStateNormal];
+    [_plusButtonsViewExample setDescriptionsTexts:buttonDescriptions];
+    
+    [_plusButtonsViewExample setButtonsBackgroundColor:unSelectedColor forState:UIControlStateNormal];
+    
+    [_plusButtonsViewExample setButtonsBackgroundColor:[UIColor colorWithRed:0.27 green:0.75 blue:0.93 alpha:1.00] forState:UIControlStateHighlighted|UIControlStateSelected];
+    
+    [_plusButtonsViewExample setButtonsSize:CGSizeMake(40.f, 40.f) forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewExample setButtonsLayerCornerRadius:40/2 forOrientation:LGPlusButtonsViewOrientationAll];
+    [_plusButtonsViewExample setButtonsTitleFont:[UIFont systemFontOfSize:24.f] forOrientation:LGPlusButtonsViewOrientationAll];
+    
+    [_plusButtonsViewExample setButtonAtIndex:0 backgroundColor:selectedColor forState:UIControlStateNormal];
+    
+    [_plusButtonsViewExample setDescriptionsTextColor:[UIColor colorWithRed:0.64 green:0.64 blue:0.64 alpha:1.00]];
     [_plusButtonsViewExample setDescriptionsFont:[UIFont boldSystemFontOfSize:12.f] forOrientation:LGPlusButtonsViewOrientationAll];
-    [_plusButtonsViewExample setDescriptionsInsets:UIEdgeInsetsMake(0.f, 0.f, 0.f, 4.f) forOrientation:LGPlusButtonsViewOrientationAll];
+
 
     [_exampleView addSubview:_plusButtonsViewExample];
 }

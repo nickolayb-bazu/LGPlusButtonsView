@@ -209,6 +209,7 @@
             [_descriptionWrapperViewsArray addObject:wrapperView];
 
             LGPlusButtonDescription *description = [LGPlusButtonDescription new];
+            description.clipsToBounds = NO;
             [wrapperView addSubview:description];
 
             [_descriptionsArray addObject:description];
@@ -1088,6 +1089,7 @@
                                          buttonInsets.top,
                                          buttonSize.width,
                                          buttonSize.height);
+            
         }
         else
         {
@@ -1149,7 +1151,6 @@
 
         UIEdgeInsets descriptionInsets = [description insetsForOrientation:orientation];
         CGPoint descriptionOffset = [description offsetForOrientation:orientation];
-        CGPoint buttonOffset = [button offsetForOrientation:orientation];
         
         if (description.text.length)
         {
@@ -1182,15 +1183,18 @@
 //                buttonWrapperView1.layer.borderColor = [UIColor blueColor].CGColor;
 //                buttonWrapperView1.layer.borderWidth = 1.0f;
                 
+                descriptionWrapperViewFrame.origin.x -= 10.f;
+                descriptionWrapperViewFrame.size.width += 20.f;
+                
                 descriptionWrapperView.frame = descriptionWrapperViewFrame;
 
 //                descriptionWrapperView.clipsToBounds = YES;
 //                descriptionWrapperView.layer.borderColor = [UIColor greenColor].CGColor;
 //                descriptionWrapperView.layer.borderWidth = 1.0f;
                 
-                descriptionFrame = CGRectMake(descriptionWrapperView.frame.size.width/2.f - descriptionSize.width/2.f,
+                descriptionFrame = CGRectMake(0,
                                               descriptionOffset.y,
-                                              descriptionSize.width,
+                                              descriptionWrapperViewFrame.size.width,
                                               descriptionSize.height);
             }
   
